@@ -3,7 +3,7 @@ set -e
 
 echo "Stopping and removing old containers if any..."
 
-# Stop all running containers safely
+# Stop running containers safely
 if [ "$(docker ps -q)" ]; then
   docker stop $(docker ps -q) || true
 else
