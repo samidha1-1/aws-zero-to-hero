@@ -1,10 +1,11 @@
 #!/bin/bash
+set -#!/bin/bash
 set -e
 
-# Pull the Docker image from Docker Hub
+echo "Pulling latest Docker image..."
 sudo docker pull samidha7/simple-python-flask-app
 
-# Run the Docker image as a container
+echo "Running new container..."
 sudo docker run -d -p 5000:5000 samidha7/simple-python-flask-app
 
 
