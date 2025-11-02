@@ -1,14 +1,17 @@
 #!/bin/bash
 set -e
 
-echo "Stopping Docker container..."
+echo "Stopping any running containers..."
 
-container_id=$(sudo docker ps -q --filter "publish=5000")
-if [ -n "$container_id" ]; then
-    sudo docker stop $container_id
-    sudo docker rm $container_id
-    echo "Container stopped and removed."
-else
-    echo "No container is running on port 5000."
+# Stop all running containers (if any)
+if [ "$(sudo docker ps -q)" ]; then
+    sudo docker stop $(sudo docker ps -q)
 fi
+
+# Remove all stopped containers (if any)
+if [ "$(sudo docker ps -aq)" ]; then
+    sudo docker rm $(sudo docker ps -aq)
+fi
+
+echo "All existing containers stopped and removed successfully!"
 
