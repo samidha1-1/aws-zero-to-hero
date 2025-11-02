@@ -1,23 +1,15 @@
 #!/bin/bash
-set -e
 
-echo "Stopping and removing old containers if any..."
-
-# Stop running containers safely
+# Stop all running containers (if any)
 if [ "$(docker ps -q)" ]; then
-  docker stop $(docker ps -q) || true
-else
-  echo "No running containers found."
+    docker stop $(docker ps -q)
 fi
 
-# Remove all stopped containers safely
-if [ "$(docker ps -aq)" ]; then
-  docker rm $(docker ps -aq) || true
-else
-  echo "No containers to remove."
+# Remove all stopped containers (if any)
+if [ "$(docker ps -a -q)" ]; then
+    docker rm $(docker ps -a -q)
 fi
-
-echo "Cleanup complete!"
+"
 
 
 
