@@ -1,8 +1,6 @@
 version: 0.0
 os: linux
-files:
-  - source: /
-    destination: /home/ubuntu/aws-zero-to-hero
+
 
 hooks:
   ApplicationStop:
