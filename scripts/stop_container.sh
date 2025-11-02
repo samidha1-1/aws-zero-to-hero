@@ -1,17 +1,16 @@
 #!/bin/bash
 set -e
 
-echo "Stopping any running containers..."
+# Stop and remove the running container if it exists
+CONTAINER_ID=$(sudo docker ps -q --filter ancestor=samidha7/simple-python-flask-app)
 
-# Stop all running containers (if any)
-if [ "$(sudo docker ps -q)" ]; then
-    sudo docker stop $(sudo docker ps -q)
+if [ -n "$CONTAINER_ID" ]; then
+    echo "Stopping container $CONTAINER_ID..."
+    sudo docker stop $CONTAINER_ID
+    echo "Removing container $CONTAINER_ID..."
+    sudo docker rm $CONTAINER_ID
+else
+    echo "No running container found for samidha7/simple-python-flask-app."
 fi
 
-# Remove all stopped containers (if any)
-if [ "$(sudo docker ps -aq)" ]; then
-    sudo docker rm $(sudo docker ps -aq)
-fi
-
-echo "All existing containers stopped and removed successfully!"
 
