@@ -1,8 +1,13 @@
 #!/bin/bash
 set -e
 
-# Pull the Docker image from Docker Hub
-docker pull samidha7/simple-python-flask-app
+echo "Starting new container..."
 
-# Run the Docker image as a container
-docker run -d -p 5000:5000 samidha7/simple-python-flask-app
+# Pull the latest image from Docker Hub
+docker pull samidha7/simple-python-flask-app:latest
+
+# Run new container in detached mode
+docker run -d -p 5000:5000 --name simple-python-flask-app samidha7/simple-python-flask-app:latest
+
+echo "Container started successfully!"
+
