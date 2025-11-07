@@ -2,7 +2,8 @@
 A repo for CICD implementation on aws managed services 
 
 
-#// fLOW OF MY CICD PIPELINE 
+
+#fLOW OF MY CICD PIPELINE 
 Whenever you push new code to GitHub →
 CodePipeline gets triggered →
 CodeBuild builds and pushes Docker image →
